@@ -7,44 +7,57 @@ import { ArrowButton } from "@/components/ui/arrow-button";
 
 // Title Component - Hero Section
 const TitleComponent = (
-  <div className="flex flex-col items-center justify-center pb-15">
-    <motion.h1
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.3 }}
-      className="text-4xl md:text-6xl font-bold tracking-tight text-center"
-    >
-      Powerful Solutions
-      <span className="block text-sidebar-primary"> Modern Businesses</span>
-    </motion.h1>
-
-    <motion.p
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.5 }}
-      className="mt-6 text-xl text-muted-foreground max-w-3xl text-center"
-    >
-      Streamline operations, boost productivity, and drive growth with our
-      comprehensive platform.
-    </motion.p>
-
+  <div className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.7 }}
-      className="flex flex-col sm:flex-row gap-4 mt-8"
+      transition={{ duration: 0.7 }}
+      className="relative z-10 max-w-5xl mx-auto px-4 text-center"
     >
-      <Link href={App}>
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-6"
+      >
+        Empower business with
+        <span className="block text-[var(--brand-primary)] mt-2">
+          modern technology solutions
+        </span>
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.5 }}
+        className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto"
+      >
+        TeleMorph is a leading technology company specializing in providing
+        innovative software solutions and IT services
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.7 }}
+        className="flex flex-col sm:flex-row gap-4 mt-12 justify-center"
+      >
+        <Link href={App}>
+          <ArrowButton
+            size="lg"
+            className="bg-primary text-primary-foreground hover:bg-[var(--brand-primary-dark)] min-w-[180px] text-lg"
+          >
+            Learn more
+          </ArrowButton>
+        </Link>
         <ArrowButton
           size="lg"
-          className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90"
+          variant="outline"
+          className="border-foreground text-foreground hover:bg-foreground/10 min-w-[180px] text-lg"
         >
-          Get Started
+          Contact Us
         </ArrowButton>
-      </Link>
-      <ArrowButton size="lg" variant="outline">
-        Learn More
-      </ArrowButton>
+      </motion.div>
     </motion.div>
   </div>
 );

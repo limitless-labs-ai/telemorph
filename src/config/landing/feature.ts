@@ -1,26 +1,23 @@
 /**
  * @file feature.ts
- * @description Configuration file for features section content and layout
+ * @description Configuration file for services section content and layout
  *
- * This file defines the content and layout for the Features component.
+ * This file defines the content and layout for the Services component.
  * It contains:
- * - Features section title and description
- * - Feature cards configuration for the bento grid layout
- * - Size and position definitions for each feature card
+ * - Services section title and description
+ * - Service cards configuration for the bento grid layout
+ * - Size and position definitions for each service card
  *
- * Update this file to modify the features content displayed in the application.
+ * Update this file to modify the services content displayed in the application.
  */
 
 import {
-  Zap,
-  Shield,
-  LineChart,
-  Users,
-  Smartphone,
-  Code,
-  Globe,
-  Clock,
-  CloudCog,
+  PackageCheck,
+  ShieldCheck,
+  Wrench,
+  FileBarChart2,
+  DollarSign,
+  Plus,
 } from "lucide-react";
 
 export type FeatureCardSize = "sm" | "md" | "lg";
@@ -42,91 +39,64 @@ export interface FeaturesConfig {
 }
 
 const featuresConfig: FeaturesConfig = {
-  title: "Powerful Features",
-  subtitle: "Everything you need",
+  title: "Our Services",
+  subtitle: "What We Offer",
   description:
-    "Our platform provides all the tools and capabilities needed to build, scale, and manage your business effectively.",
+    "We provide a comprehensive suite of services to help your business manage, secure, and optimize your IT and telecom infrastructure.",
   cards: [
     {
-      title: "Lightning Fast",
+      title: "Procurement & Management",
       description:
-        "Experience industry-leading performance with optimized infrastructure and real-time processing.",
-      icon: Zap,
-      size: "lg",
-      colorAccent: "from-yellow-500 to-orange-500",
+        "Device procurement and management involves acquiring, setting up, and maintaining business IT equipment like smartphones and tablets. It ensures employees have secure, cost-effective tools to work efficiently.",
+      icon: PackageCheck,
+      size: "md",
+      colorAccent: "from-green-500 to-emerald-500",
       className: "md:col-span-2 md:row-span-1",
     },
     {
-      title: "Enterprise Security",
+      title: "Data Management & Security",
       description:
-        "Bank-grade security with end-to-end encryption, multi-factor authentication, and compliance tools.",
-      icon: Shield,
+        "Device security and data management protects sensitive information on IT devices through encryption, access controls, monitoring, and backups. It aims to prevent data breaches while maintaining confidentiality through strong policies, training, and security tools.",
+      icon: ShieldCheck,
       size: "md",
       colorAccent: "from-blue-500 to-cyan-500",
       className: "md:col-span-1 md:row-span-1",
     },
     {
-      title: "Advanced Analytics",
+      title: "Maintenance & Support",
       description:
-        "Gain valuable insights with comprehensive analytics tools and customizable dashboards.",
-      icon: LineChart,
+        "Maintenance and support involve fixing hardware and software issues to keep devices running efficiently. This helps extend device lifespan, reduce downtime, and maintain user productivity.",
+      icon: Wrench,
+      size: "md",
+      colorAccent: "from-yellow-500 to-orange-500",
+      className: "md:col-span-1 md:row-span-1",
+    },
+    {
+      title: "ELD Solutions",
+      description:
+        "ELD software development helps trucking companies boost productivity by creating apps for log management and providing guidance on using ELD devices and meeting legal requirements.",
+      icon: FileBarChart2,
       size: "md",
       colorAccent: "from-purple-500 to-violet-500",
       className: "md:col-span-1 md:row-span-1",
     },
     {
-      title: "Team Collaboration",
+      title: "Expense Management",
       description:
-        "Seamless collaboration features for teams of any size with granular permission controls.",
-      icon: Users,
-      size: "sm",
-      colorAccent: "from-green-500 to-emerald-500",
-      className: "md:col-span-1 md:row-span-1",
-    },
-    {
-      title: "Mobile Optimized",
-      description:
-        "Full-featured mobile applications for iOS and Android with offline capabilities.",
-      icon: Smartphone,
-      size: "sm",
-      colorAccent: "from-red-500 to-pink-500",
-      className: "md:col-span-1 md:row-span-1",
-    },
-    {
-      title: "Extensive API",
-      description:
-        "Powerful and well-documented APIs for seamless integration with your existing systems.",
-      icon: Code,
+        "Expense management focuses on controlling and reducing business costs by tracking usage, setting policies, and securing better service rates.",
+      icon: DollarSign,
       size: "md",
       colorAccent: "from-amber-500 to-yellow-500",
-      className: "md:col-span-2 md:row-span-1",
-    },
-    {
-      title: "Global Infrastructure",
-      description:
-        "Worldwide data centers ensuring low latency and high availability for users everywhere.",
-      icon: Globe,
-      size: "md",
-      colorAccent: "from-blue-500 to-indigo-500",
       className: "md:col-span-1 md:row-span-1",
     },
     {
-      title: "24/7 Support",
+      title: "And More",
       description:
-        "Round-the-clock expert support via multiple channels to help you succeed.",
-      icon: Clock,
+        "We offer a wide range of services to help your business manage, secure, and optimize your IT and telecom infrastructure. We are always looking for new ways to help you grow your business.",
+      icon: Plus,
       size: "md",
-      colorAccent: "from-teal-500 to-green-500",
+      colorAccent: "from-green-500 to-emerald-500",
       className: "md:col-span-1 md:row-span-1",
-    },
-    {
-      title: "Cloud Architecture",
-      description:
-        "Modern cloud-native architecture that scales automatically based on your needs.",
-      icon: CloudCog,
-      size: "lg",
-      colorAccent: "from-indigo-500 to-purple-500",
-      className: "md:col-span-2 md:row-span-1",
     },
   ],
 };

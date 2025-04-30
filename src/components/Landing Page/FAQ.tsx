@@ -5,6 +5,8 @@ import { faqItems, faqTitles } from "@/config/landing/faq";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -92,8 +94,58 @@ function FAQ() {
                   transition={{ duration: 0.2 }}
                   className="overflow-hidden"
                 >
-                  <div className="p-6 pt-0 text-muted-foreground">
-                    {item.answer}
+                  <div className="p-6 pt-0">
+                    <div className="prose prose-invert prose-primary max-w-none">
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          h2: ({ node, ...props }) => (
+                            <h2
+                              className="text-2xl font-bold mb-4 text-foreground"
+                              {...props}
+                            />
+                          ),
+                          h3: ({ node, ...props }) => (
+                            <h3
+                              className="text-xl font-bold mb-3 text-foreground"
+                              {...props}
+                            />
+                          ),
+                          ul: ({ node, ...props }) => (
+                            <ul className="space-y-2 mb-4" {...props} />
+                          ),
+                          ol: ({ node, ...props }) => (
+                            <ol
+                              className="space-y-2 mb-4 list-decimal pl-4"
+                              {...props}
+                            />
+                          ),
+                          li: ({ node, ...props }) => (
+                            <li className="text-muted-foreground" {...props} />
+                          ),
+                          p: ({ node, ...props }) => (
+                            <p
+                              className="text-muted-foreground mb-4"
+                              {...props}
+                            />
+                          ),
+                          blockquote: ({ node, ...props }) => (
+                            <blockquote
+                              className="border-l-4 border-[var(--brand-primary)] pl-4 italic text-muted-foreground my-4"
+                              {...props}
+                            />
+                          ),
+                          strong: ({ node, ...props }) => (
+                            <strong
+                              className="font-bold text-foreground"
+                              {...props}
+                            />
+                          ),
+                        }}
+                      >
+                        {item.answer}
+                      </ReactMarkdown>
+                    </div>
                   </div>
                 </motion.div>
               )}

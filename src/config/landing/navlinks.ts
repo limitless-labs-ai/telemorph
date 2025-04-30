@@ -11,21 +11,17 @@
  * Update this file to modify the main navigation structure of the application.
  */
 
-import {
-  Home,
-  DollarSign,
-  BarChart3,
-  Users,
-  MessageCircle,
-} from "lucide-react";
+import { User, Briefcase, Book, BrainCircuit } from "lucide-react";
 
 const navLinks = [
-  { name: "Features", path: "/#features", icon: BarChart3 },
-  { name: "Pricing", path: "/pricing", icon: DollarSign },
-  { name: "Community", path: "/community", icon: MessageCircle },
-  { name: "Affiliates", path: "/affiliates", icon: Users },
+  { name: "About Us", path: "/about", icon: User },
+  { name: "Solutions", path: "/solutions", icon: BrainCircuit },
+  { name: "Blog", path: "/blog", icon: Book },
+  { name: "Careers", path: "/careers", icon: Briefcase },
 ];
 
-const App = "/dashboard";
+const ButtonText = "Contact Us";
 
-export { navLinks, App };
+const App = "/contact";
+
+export { navLinks, App, ButtonText };

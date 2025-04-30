@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowButton } from "@/components/ui/arrow-button";
 import { ModeToggle } from "@/components/ModeToggle";
-import { navLinks, App } from "@/config/landing/navlinks";
+import { navLinks, App, ButtonText } from "@/config/landing/navlinks";
 import Logo from "@/components/Logo";
 
 export function Navbar() {
@@ -139,23 +139,23 @@ export function Navbar() {
             >
               <Link href={App}>
                 <ArrowButton className="ml-4 bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90 rounded-full">
-                  Get Started
+                  {ButtonText}
                 </ArrowButton>
               </Link>
             </motion.div>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, rotate: -90 }}
               animate={{ opacity: 1, rotate: 0 }}
               transition={{ delay: 0.6, type: "spring" }}
               className="ml-2"
             >
               <ModeToggle />
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden space-x-2">
-            <ModeToggle />
+            {/* <ModeToggle /> */}
             <Button
               variant="ghost"
               size="icon"
@@ -231,7 +231,7 @@ export function Navbar() {
                     className="pt-2 pb-2 cursor-pointer"
                   >
                     <ArrowButton className="w-full bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90 rounded-full">
-                      Get Started
+                      {ButtonText}
                     </ArrowButton>
                   </motion.div>
                 </Link>

@@ -5,7 +5,8 @@ import { motion } from "motion/react";
 import { ArrowButton } from "../ui/arrow-button";
 import { cn } from "@/lib/utils";
 import { textEffect, cardText } from "@/config/landing/gettingstarted";
-
+import Link from "next/link";
+import { App } from "@/config/landing/navlinks";
 function GetStarted() {
   return (
     <>
@@ -37,16 +38,18 @@ function GetStarted() {
             >
               {cardText.description}
             </p>
-            <ArrowButton
-              size="lg"
-              className={cn(
-                "bg-gradient-to-r from-primary to-primary/60",
-                "text-primary-foreground hover:opacity-90",
-                "text-lg py-6 px-10"
-              )}
-            >
-              {cardText.buttonText}
-            </ArrowButton>
+            <Link href={App}>
+              <ArrowButton
+                size="lg"
+                className={cn(
+                  "bg-gradient-to-r from-primary to-primary/60",
+                  "text-primary-foreground hover:opacity-90",
+                  "text-lg py-6 px-10"
+                )}
+              >
+                {cardText.buttonText}
+              </ArrowButton>
+            </Link>
           </div>
         </motion.div>
       </div>

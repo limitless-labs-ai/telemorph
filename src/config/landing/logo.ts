@@ -13,10 +13,12 @@
  */
 
 const Brand = {
-  name: "Acme",
+  name_half1: "tele",
+  name_half2: "morph",
   logo: "/logo.svg",
-  nameStyle:
+  nameStyle1:
     "text-xl font-bold bg-gradient-to-r from-primary to-sidebar-primary bg-clip-text text-transparent",
+  nameStyle2: "text-xl font-bold text-foreground",
   description:
     "Streamline operations, boost productivity, and drive growth with our comprehensive platform.",
 };

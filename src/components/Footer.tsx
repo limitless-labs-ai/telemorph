@@ -66,7 +66,7 @@ export function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-background hover:text-foreground transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.name}
@@ -163,7 +163,7 @@ export function Footer() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             variant="outline"
             size="sm"
-            className="rounded-full bg-sidebar-primary/10 hover:bg-sidebar-primary/20 border-sidebar-primary/30"
+            className="rounded-full bg-sidebar-primary/10 hover:bg-sidebar-primary/20 border-sidebar-primary/30 cursor-pointer"
           >
             Back to top
           </Button>

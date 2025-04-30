@@ -92,7 +92,7 @@ function Features() {
       </BlurFade>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="md:col-span-2 grid grid-cols-1 gap-6">
+        <div className="md:col-span-1 grid grid-cols-1 gap-6">
           <FeatureCard {...featuresConfig.cards[0]} index={0} />
         </div>
         <div className="md:col-span-1 grid grid-cols-1 gap-6">
@@ -105,21 +105,11 @@ function Features() {
         <div className="md:col-span-1 grid grid-cols-1 gap-6">
           <FeatureCard {...featuresConfig.cards[3]} index={3} />
         </div>
-        <div className="md:col-span-1 grid grid-cols-1 gap-6">
+        <div className="md:col-span-2 grid grid-cols-1 gap-6">
           <FeatureCard {...featuresConfig.cards[4]} index={4} />
         </div>
         <div className="md:col-span-2 grid grid-cols-1 gap-6">
           <FeatureCard {...featuresConfig.cards[5]} index={5} />
-        </div>
-
-        <div className="md:col-span-1 grid grid-cols-1 gap-6">
-          <FeatureCard {...featuresConfig.cards[6]} index={6} />
-        </div>
-        <div className="md:col-span-1 grid grid-cols-1 gap-6">
-          <FeatureCard {...featuresConfig.cards[7]} index={7} />
-        </div>
-        <div className="md:col-span-2 grid grid-cols-1 gap-6">
-          <FeatureCard {...featuresConfig.cards[8]} index={8} />
         </div>
       </div>
     </section>

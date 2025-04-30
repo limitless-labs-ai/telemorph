@@ -61,10 +61,10 @@ const footerConfig: FooterConfig = {
     {
       title: "Products",
       links: [
-        { name: "Features", href: "/#features" },
-        { name: "Pricing", href: "/pricing" },
-        { name: "API", href: "/api" },
-        { name: "Documentation", href: "/docs" },
+        { name: "About Us", href: "/about" },
+        { name: "Solutions", href: "/solutions" },
+        { name: "Blog", href: "/blog" },
+        { name: "Careers", href: "/careers" },
       ],
     },
     {

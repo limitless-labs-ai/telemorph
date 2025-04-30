@@ -1,0 +1,19 @@
+<svg width="100%" height="100%" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="50" y="100" width="300" height="200" rx="8" fill="currentColor" fill-opacity="0.1"/>
+  <path d="M50 180L350 180" stroke="currentColor" stroke-width="4"/>
+  <path d="M100 140L140 140" stroke="currentColor" stroke-width="4"/>
+  <path d="M160 140L200 140" stroke="currentColor" stroke-width="4"/>
+  <path d="M220 140L260 140" stroke="currentColor" stroke-width="4"/>
+  <path d="M280 140L320 140" stroke="currentColor" stroke-width="4"/>
+  <path d="M80 220L120 220" stroke="currentColor" stroke-width="4"/>
+  <path d="M140 220L180 220" stroke="currentColor" stroke-width="4"/>
+  <path d="M200 220L240 220" stroke="currentColor" stroke-width="4"/>
+  <path d="M260 220L300 220" stroke="currentColor" stroke-width="4"/>
+  <path d="M80 260L120 260" stroke="currentColor" stroke-width="4"/>
+  <path d="M140 260L180 260" stroke="currentColor" stroke-width="4"/>
+  <path d="M200 260L240 260" stroke="currentColor" stroke-width="4"/>
+  <path d="M260 260L300 260" stroke="currentColor" stroke-width="4"/>
+  <path d="M50 100L150 50L350 100" stroke="currentColor" stroke-width="4"/>
+  <circle cx="150" cy="50" r="20" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="4"/>
+  <path d="M140 50L160 50M150 40L150 60" stroke="currentColor" stroke-width="2"/>
+</svg> 
