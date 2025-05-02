@@ -18,22 +18,17 @@ function GetStarted() {
           transition={{ duration: 0.5 }}
           className={cn(
             "rounded-2xl shadow-xl p-8",
-            "bg-background border-2 border-border",
+            "bg-[var(--gradient-indigo)] border-2 border-border",
             "transition-colors duration-200"
           )}
         >
           <div className={cn("flex flex-col items-center gap-6 text-center")}>
-            <h2
-              className={cn(
-                "text-4xl md:text-5xl font-bold",
-                "bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
-              )}
-            >
+            <h2 className={cn("text-4xl md:text-5xl font-bold", "text-white")}>
               {cardText.title}
             </h2>
             <p
               className={cn(
-                "text-muted-foreground text-lg md:text-xl max-w-2xl leading-relaxed"
+                "text-[var(--brand-indigo-accent)] text-lg md:text-xl max-w-2xl leading-relaxed"
               )}
             >
               {cardText.description}
@@ -42,8 +37,8 @@ function GetStarted() {
               <ArrowButton
                 size="lg"
                 className={cn(
-                  "bg-gradient-to-r from-primary to-primary/60",
-                  "text-primary-foreground hover:opacity-90",
+                  "bg-[var(--brand-indigo)] hover:bg-[var(--brand-indigo-light)]",
+                  "text-white",
                   "text-lg py-6 px-10"
                 )}
               >

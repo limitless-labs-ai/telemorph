@@ -65,12 +65,30 @@
   --brand-secondary: #6e2fff;
   --brand-accent: #74d371;
 
+  /* Additional Brand Colors - Indigo Theme */
+  --brand-indigo: #6366f1;
+  --brand-indigo-dark: #4f46e5;
+  --brand-indigo-light: #818cf8;
+  --brand-indigo-accent: #c7d2fe;
+
   /* Background Colors */
   --background: #ffffff;
   --foreground: #1a1a1a;
   --background-dark: #000000;
   --background-gradient-from: rgba(110, 47, 255, 0.2);
   --background-gradient-to: rgba(255, 47, 142, 0.2);
+
+  /* Gradient Backgrounds */
+  --gradient-indigo: linear-gradient(
+    135deg,
+    var(--brand-indigo) 0%,
+    var(--brand-indigo-dark) 100%
+  );
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--brand-primary) 0%,
+    var(--brand-primary-dark) 100%
+  );
 
   /* Component Colors */
   --card: oklch(1 0.01 250);

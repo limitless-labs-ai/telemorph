@@ -1,12 +1,10 @@
 import React from "react";
 import PageLayout from "@/components/Utilities/PageLayout";
-
-function Affiliates() {
+function Blog() {
   return (
     <PageLayout>
-      <div>Affiliates</div>
+      <div>Blog</div>
     </PageLayout>
   );
 }
-
-export default Affiliates;
+export default Blog;
