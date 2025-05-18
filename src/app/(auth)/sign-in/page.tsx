@@ -78,7 +78,7 @@ export default function LoginPage() {
             </ArrowButton>
           </form>
 
-          <div className="relative">
+          {/* <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t"></div>
             </div>
@@ -96,7 +96,7 @@ export default function LoginPage() {
           >
             {googleIcon()}
             Sign in with Google
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>

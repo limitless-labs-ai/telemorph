@@ -16,33 +16,33 @@ import type { Metadata } from "next";
 
 // Site URL configuration
 export const siteConfig = {
-  name: "Limitless Labs Framework",
-  url: "https://limitlesslabs.ai",
-  ogImage: "https://limitlesslabs.ai/og-image.jpg",
+  name: "TeleMorph - IT Services & Solutions",
+  url: "https://telemorph.com",
+  ogImage: "https://telemorph.com/og-image.jpg",
   description:
-    "A comprehensive description of your project that will appear in search results and social shares",
+    "Streamline operations, boost productivity, and drive growth with our comprehensive platform.",
   twitter: {
-    handle: "@limitlesslabs",
-    site: "@limitlesslabs",
+    handle: "@telemorph",
+    site: "@telemorph",
     cardType: "summary_large_image" as const,
   },
   keywords: [
-    "Limitless Labs",
-    "Framework",
-    "AI",
-    "Machine Learning",
-    "Data Science",
-    "Artificial Intelligence",
-    "Data Analysis",
-    "Data Visualization",
-    "Data Engineering",
-    "DataOps",
-    "DataOps Framework",
+    "teleMorph",
+    "Business Solutions",
+    "IT Services",
+    "Software Solutions",
+    "Productivity",
+    "Business Management",
+    "Operations Management",
+    "Team Collaboration",
+    "Business Efficiency",
+    "Technology Solutions",
+    "Business Growth",
   ],
   authors: [
     {
-      name: "Limitless Labs",
-      url: "https://limitlesslabs.ai",
+      name: "teleMorph",
+      url: "https://telemorph.com",
     },
   ],
 };

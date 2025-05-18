@@ -16,6 +16,57 @@
   animation: scroll var(--animation-duration) linear infinite;
 }
 
+.article {
+  @apply flex flex-col gap-3 text-lg tracking-wide mb-20;
+}
+.article h1 {
+  @apply text-4xl font-bold mb-5;
+}
+.article h2 {
+  @apply text-3xl font-bold mb-4;
+}
+.article h3 {
+  @apply text-2xl font-bold mb-3;
+}
+.article p {
+  @apply mb-5;
+}
+.article ul {
+  @apply list-disc pl-5 mb-5;
+}
+.article ol {
+  @apply list-decimal pl-5 mb-5;
+}
+.article a {
+  @apply text-blue-500;
+}
+.article blockquote {
+  @apply border-l-2 border-gray-300 pl-4 py-2 my-4;
+}
+.article blockquote p {
+  @apply mb-0;
+}
+
+.article img {
+  @apply w-full h-auto;
+}
+
+.article code {
+  @apply bg-gray-100 p-1 rounded;
+}
+
+.article pre {
+  @apply bg-gray-800 p-4 rounded-md my-6 overflow-x-auto;
+}
+
+.article pre code {
+  @apply bg-transparent text-white p-0 block w-full font-mono text-sm;
+}
+
+.article p img {
+  @apply w-1/2 mx-auto;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

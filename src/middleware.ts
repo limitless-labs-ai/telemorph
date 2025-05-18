@@ -14,6 +14,8 @@ export const config = {
      * - favicon.ico (favicon file)
      * Feel free to modify this pattern to include more paths.
      */
-    "/dashboard/:path*",
+    "/sign-up",
+    "/admin/dashboard",
+    "/admin/applications/:path*",
   ],
 };

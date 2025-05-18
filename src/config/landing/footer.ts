@@ -52,7 +52,7 @@ export type FooterConfig = {
 const footerConfig: FooterConfig = {
   // DO NOT EDIT THIS SECTION
   company: {
-    name: Brand.name,
+    name: Brand.name_half1 + Brand.name_half2,
     logo: Brand.logo,
     description: Brand.description,
   },
@@ -118,7 +118,7 @@ const footerConfig: FooterConfig = {
       icon: Mail,
     },
   ],
-  copyright: `© ${new Date().getFullYear()} Acme Inc. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} TeleMorph. All rights reserved.`,
 };
 
 export default footerConfig;

@@ -141,3 +141,77 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Copyright
 
 This project is the proprietary property of Limitless Labs AI and is intended for use by authorized personnel only. Unauthorized access, use, or distribution is strictly prohibited.
+
+## Admin Account Setup
+
+To create admin accounts, you need to:
+
+1. Add the `ADMIN_DEV_TOKEN` environment variable to your `.env.local` file:
+
+   ```
+   ADMIN_DEV_TOKEN=your-secure-random-token-here
+   ```
+
+2. Use the sign-up page at `/sign-up` and provide this token when creating a new admin account.
+
+3. Only developers with access to this token can create admin accounts.
+
+# Job Listings Management
+
+This directory contains the job listings for the careers page. Each job is stored as a Markdown file with frontmatter metadata.
+
+## Adding a New Job Listing
+
+To add a new job listing:
+
+1. Create a new Markdown file in this directory with a unique identifier (e.g., `job-004.md`)
+2. Include the following frontmatter at the top of the file:
+
+```markdown
+---
+title: "Job Title"
+department: "Department Name"
+location: "Location (e.g., Remote, City, etc.)"
+employmentType: "Employment Type (e.g., Full-time, Part-time, Contract)"
+date: "YYYY-MM-DD"
+---
+```
+
+3. Write the job description in Markdown format below the frontmatter. Use headings (# and ##) to organize the content.
+
+Example structure:
+
+```markdown
+# Job Title
+
+General introduction and overview of the position.
+
+## Requirements:
+
+- Requirement 1
+- Requirement 2
+- Requirement 3
+
+## Responsibilities:
+
+- Responsibility 1
+- Responsibility 2
+- Responsibility 3
+
+## Benefits:
+
+- Benefit 1
+- Benefit 2
+- Benefit 3
+```
+
+## Updating or Removing a Job Listing
+
+- To update a job listing, edit the corresponding Markdown file.
+- To remove a job listing, delete the corresponding Markdown file.
+
+## Important Notes
+
+- New jobs will automatically appear on the careers page after deployment.
+- Jobs are sorted by date, with the newest jobs appearing first.
+- The job ID used in the URL is derived from the filename (without the `.md` extension).
