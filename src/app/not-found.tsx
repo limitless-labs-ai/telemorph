@@ -28,7 +28,7 @@ function NotFound() {
           404
         </h1>
         <p className={cn("text-xl text-muted-foreground")}>
-          Oops! The page you're looking for doesn't exist.
+          Oops! The page you&apos;re looking for doesn&apos;t exist.
         </p>
         <Link href="/">
           <ArrowButton>Return Home</ArrowButton>

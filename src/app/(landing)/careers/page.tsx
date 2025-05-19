@@ -13,8 +13,9 @@ export default async function Careers() {
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl font-bold">Careers at Telemorph</h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Join our team and help shape the future of telecommunications. We're
-            looking for passionate individuals who want to make a difference.
+            Join our team and help shape the future of telecommunications.
+            We&apos;re looking for passionate individuals who want to make a
+            difference.
           </p>
         </div>
 

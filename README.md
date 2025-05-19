@@ -142,20 +142,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is the proprietary property of Limitless Labs AI and is intended for use by authorized personnel only. Unauthorized access, use, or distribution is strictly prohibited.
 
-## Admin Account Setup
-
-To create admin accounts, you need to:
-
-1. Add the `ADMIN_DEV_TOKEN` environment variable to your `.env.local` file:
-
-   ```
-   ADMIN_DEV_TOKEN=your-secure-random-token-here
-   ```
-
-2. Use the sign-up page at `/sign-up` and provide this token when creating a new admin account.
-
-3. Only developers with access to this token can create admin accounts.
-
 # Job Listings Management
 
 This directory contains the job listings for the careers page. Each job is stored as a Markdown file with frontmatter metadata.

@@ -9,7 +9,6 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowButton } from "@/components/ui/arrow-button";
-import { ModeToggle } from "@/components/ModeToggle";
 import { navLinks, App, ButtonText } from "@/config/landing/navlinks";
 import Logo from "@/components/Logo";
 
@@ -143,19 +142,10 @@ export function Navbar() {
                 </ArrowButton>
               </Link>
             </motion.div>
-            {/* <motion.div
-              initial={{ opacity: 0, rotate: -90 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              transition={{ delay: 0.6, type: "spring" }}
-              className="ml-2"
-            >
-              <ModeToggle />
-            </motion.div> */}
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden space-x-2">
-            {/* <ModeToggle /> */}
             <Button
               variant="ghost"
               size="icon"

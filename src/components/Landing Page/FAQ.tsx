@@ -99,43 +99,43 @@ function FAQ() {
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
                         components={{
-                          h2: ({ node, ...props }) => (
+                          h2: ({ ...props }) => (
                             <h2
                               className="text-2xl font-bold mb-4 text-foreground"
                               {...props}
                             />
                           ),
-                          h3: ({ node, ...props }) => (
+                          h3: ({ ...props }) => (
                             <h3
                               className="text-xl font-bold mb-3 text-foreground"
                               {...props}
                             />
                           ),
-                          ul: ({ node, ...props }) => (
+                          ul: ({ ...props }) => (
                             <ul className="space-y-2 mb-4" {...props} />
                           ),
-                          ol: ({ node, ...props }) => (
+                          ol: ({ ...props }) => (
                             <ol
                               className="space-y-2 mb-4 list-decimal pl-4"
                               {...props}
                             />
                           ),
-                          li: ({ node, ...props }) => (
+                          li: ({ ...props }) => (
                             <li className="text-muted-foreground" {...props} />
                           ),
-                          p: ({ node, ...props }) => (
+                          p: ({ ...props }) => (
                             <p
                               className="text-muted-foreground mb-4"
                               {...props}
                             />
                           ),
-                          blockquote: ({ node, ...props }) => (
+                          blockquote: ({ ...props }) => (
                             <blockquote
                               className="border-l-4 border-[var(--brand-primary)] pl-4 italic text-muted-foreground my-4"
                               {...props}
                             />
                           ),
-                          strong: ({ node, ...props }) => (
+                          strong: ({ ...props }) => (
                             <strong
                               className="font-bold text-foreground"
                               {...props}

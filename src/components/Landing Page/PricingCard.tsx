@@ -19,7 +19,7 @@ function PricingCard({
   buttonText?: string;
 }) {
   // Check if this is a yearly plan with a discount
-  const isYearlyDiscount = price !== "0";
+  // const isYearlyDiscount = price !== "0"; // Removed unused variable
 
   return (
     <div

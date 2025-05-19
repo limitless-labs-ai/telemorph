@@ -4,6 +4,7 @@ import PageLayout from "@/components/Utilities/PageLayout";
 import PricingCard from "@/components/Landing Page/PricingCard";
 import { pricing, pricingTitles } from "@/config/pricing";
 import Image from "next/image";
+import Link from "next/link";
 
 function SolutionsContent() {
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -104,7 +105,7 @@ function SolutionsContent() {
                   tablets for a business. This includes selecting the right
                   devices, negotiating contracts with carriers and vendors,
                   deploying and setting up the equipment, providing ongoing
-                  support, troubleshooting, and managing the devices'
+                  support, troubleshooting, and managing the devices&apos;
                   end-of-life cycle. The goal is to equip employees with the
                   necessary tools to enhance efficiency, security, and
                   cost-effectiveness.
@@ -210,10 +211,11 @@ function SolutionsContent() {
                   problems, and software issues, like sluggish performance or
                   connectivity problems. These services can be provided by
                   manufacturers, carriers, or independent repair shops. The goal
-                  is to restore the device's functionality, ensuring it operates
-                  efficiently so users can remain productive. This approach
-                  helps businesses extend the lifespan and value of their
-                  devices, reducing downtime and avoiding costly replacements.
+                  is to restore the device&apos;s functionality, ensuring it
+                  operates efficiently so users can remain productive. This
+                  approach helps businesses extend the lifespan and value of
+                  their devices, reducing downtime and avoiding costly
+                  replacements.
                 </p>
                 <button className="mt-6 inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
                   Learn more
@@ -364,7 +366,8 @@ function Pricing() {
   const pricingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (pricingRef.current) {
+    const currentPricingRef = pricingRef.current;
+    if (currentPricingRef) {
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {
@@ -374,7 +377,7 @@ function Pricing() {
             }
 
             const animateRightElements =
-              pricingRef.current?.querySelectorAll(".animate-in-right");
+              currentPricingRef?.querySelectorAll(".animate-in-right");
             setTimeout(() => {
               animateRightElements?.forEach((el) => {
                 el.classList.add("animate-in");
@@ -385,11 +388,11 @@ function Pricing() {
         { threshold: 0.1 }
       );
 
-      observer.observe(pricingRef.current);
+      observer.observe(currentPricingRef);
 
       return () => {
-        if (pricingRef.current) {
-          observer.unobserve(pricingRef.current);
+        if (currentPricingRef) {
+          observer.unobserve(currentPricingRef);
         }
       };
     }
@@ -489,19 +492,19 @@ function Pricing() {
           </h2>
           <p className="text-muted-foreground mb-8">
             Have questions? Check out our{" "}
-            <a
+            <Link
               href="/#faq"
               className="text-primary hover:underline hover:text-primary/80 transition-colors"
             >
               FAQ page
-            </a>{" "}
+            </Link>{" "}
             or{" "}
-            <a
+            <Link
               href="/#"
               className="text-primary hover:underline hover:text-primary/80 transition-colors"
             >
               contact our support team
-            </a>
+            </Link>
           </p>
         </div>
       </div>

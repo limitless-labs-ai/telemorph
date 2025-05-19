@@ -23,6 +23,7 @@ import {
   Mail,
 } from "lucide-react";
 import Brand from "@/config/landing/logo";
+import React from "react";
 
 export type FooterLink = {
   name: string;
@@ -44,7 +45,7 @@ export type FooterConfig = {
   socialLinks: {
     name: string;
     href: string;
-    icon: any;
+    icon: React.ElementType;
   }[];
   copyright: string;
 };

@@ -1,16 +1,24 @@
 import React from "react";
 import Link from "next/link";
 import PageLayout from "@/components/Utilities/PageLayout";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { getJobData } from "@/lib/jobs";
 import { notFound } from "next/navigation";
 import ApplicationForm from "@/components/Careers/ApplicationForm";
+// import { Badge } from "@/components/ui/badge";
+// import { Separator } from "@/components/ui/separator";
+// import { supabaseServer } from "@/utils/supabase/server";
+// import { Metadata } from "next";
 
 interface JobPageProps {
   params: Promise<{
     id: string;
   }>;
 }
+
+// Removed: export const revalidate = 60;
+
+// Removed: async function getCareer(id: string) { ... }
 
 export default async function JobPage({ params }: JobPageProps) {
   const resolvedParams = await params;
@@ -65,7 +73,7 @@ export default async function JobPage({ params }: JobPageProps) {
         </div>
       </PageLayout>
     );
-  } catch (error) {
+  } catch /* Removed: (error) */ {
     notFound();
   }
 }
