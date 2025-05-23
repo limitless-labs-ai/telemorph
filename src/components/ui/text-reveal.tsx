@@ -22,17 +22,18 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
   const words = children.split(" ");
 
   return (
-    <div ref={targetRef} className={cn("relative z-0 h-[200vh]", className)}>
+    <div ref={targetRef} className={cn("relative z-0 h-[200vh]")}>
       <div
-        className={
-          "sticky top-0 mx-auto flex h-[50%] max-w-4xl items-center bg-transparent px-[1rem] py-[5rem]"
-        }
+        className={cn(
+          "sticky top-0 mx-auto flex h-[50%] max-w-4xl items-center bg-transparent px-[1rem] py-[5rem]",
+          className
+        )}
       >
         <span
-          ref={targetRef}
-          className={
-            "flex flex-wrap p-5 text-2xl font-bold text-black/20 dark:text-white/20 md:p-8 md:text-3xl lg:p-10 lg:text-4xl xl:text-5xl"
-          }
+          className={cn(
+            "flex flex-wrap p-5 text-2xl font-bold text-black/20 dark:text-white/20 md:p-8 md:text-3xl lg:p-10 lg:text-4xl xl:text-5xl",
+            "w-full justify-center"
+          )}
         >
           {words.map((word, i) => {
             const start = i / words.length;
@@ -62,7 +63,7 @@ const Word: FC<WordProps> = ({ children, progress, range }) => {
       <span className="absolute opacity-30">{children}</span>
       <motion.span
         style={{ opacity: opacity }}
-        className={"text-black dark:text-white"}
+        className="text-black dark:text-white"
       >
         {children}
       </motion.span>

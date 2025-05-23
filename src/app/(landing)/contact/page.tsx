@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import PageLayout from "@/components/Utilities/PageLayout";
 import { Button } from "@/components/ui/button";
 import { contact } from "@/config/contact";
@@ -11,8 +13,79 @@ import {
   MapPin,
   Clock,
 } from "lucide-react";
+import { toast } from "sonner";
 
 function Contact() {
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  // Loading state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle input changes
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      setIsSubmitting(true);
+      console.log("Submitting form data:", formData);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      // Reset form on success
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+
+      // Show success message
+      toast.success("Your message has been sent successfully!");
+    } catch (error: any) {
+      console.error("Error sending message:", error);
+
+      // Display more detailed error message
+      toast.error(
+        `Failed to send message: ${error.message || "Unknown error"}`
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <PageLayout>
       <div className="w-full max-w-7xl mx-auto px-8 py-8">
@@ -43,7 +116,7 @@ function Contact() {
               {contact.formSection.description}
             </p>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {contact.formFields.slice(0, 4).map((field) => (
                   <div key={field.name} className="space-y-2">
@@ -63,6 +136,8 @@ function Contact() {
                       placeholder={field.placeholder}
                       required={field.required}
                       className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[var(--brand-indigo)] focus:border-transparent"
+                      value={formData[field.name as keyof typeof formData]}
+                      onChange={handleChange}
                     />
                   </div>
                 ))}
@@ -85,6 +160,8 @@ function Contact() {
                       required={field.required}
                       rows={5}
                       className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[var(--brand-indigo)] focus:border-transparent"
+                      value={formData[field.name as keyof typeof formData]}
+                      onChange={handleChange}
                     />
                   ) : (
                     <input
@@ -94,13 +171,20 @@ function Contact() {
                       placeholder={field.placeholder}
                       required={field.required}
                       className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[var(--brand-indigo)] focus:border-transparent"
+                      value={formData[field.name as keyof typeof formData]}
+                      onChange={handleChange}
                     />
                   )}
                 </div>
               ))}
 
-              <Button type="submit" size="lg" className="w-full md:w-auto">
-                Send Message
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full md:w-auto"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>

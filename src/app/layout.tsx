@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/Utilities/theme-provider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { defaultMetadata } from "@/config/landing/metadata";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -42,6 +43,7 @@ export default function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
+          <Toaster position="top-right" closeButton theme="dark" richColors />
           <div id="home"></div>
           <Navbar />
           <main className="relative z-10">{children}</main>
