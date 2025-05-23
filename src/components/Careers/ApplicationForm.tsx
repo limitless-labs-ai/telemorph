@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface ApplicationFormProps {
   jobTitle: string;
@@ -38,21 +39,53 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle }) => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    if (!formState.resume) {
+      toast.error("Please upload your resume/CV");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      console.log("Submitting job application:", formState);
+
+      // Create FormData for file upload
+      const formData = new FormData();
+      formData.append("name", formState.name);
+      formData.append("email", formState.email);
+      formData.append("phone", formState.phone);
+      formData.append("jobTitle", jobTitle);
+      formData.append("coverLetter", formState.coverLetter);
+      formData.append("resume", formState.resume);
+
+      const response = await fetch("/api/careers", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit application");
+      }
+
       setIsSubmitted(true);
-      // In a real app, you would send the form data to your API here
-    }, 1500);
+      toast.success("Your application has been submitted successfully!");
+    } catch (error: any) {
+      console.error("Error submitting application:", error);
+      toast.error(
+        `Failed to submit application: ${error.message || "Unknown error"}`
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
     return (
-      <div className="mt-8 p-6 border rounded-lg bg-green-50 text-green-800">
+      <div className="mt-8 p-6 border rounded-lg bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200">
         <h2 className="text-xl font-semibold mb-2">Application Submitted!</h2>
         <p>
           Thank you for applying for the {jobTitle} position. Our team will
@@ -78,7 +111,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle }) => {
               required
               value={formState.name}
               onChange={handleInputChange}
-              className="px-3 py-2 border rounded-md"
+              className="px-3 py-2 border rounded-md bg-background"
               placeholder="John Doe"
             />
           </div>
@@ -94,7 +127,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle }) => {
               required
               value={formState.email}
               onChange={handleInputChange}
-              className="px-3 py-2 border rounded-md"
+              className="px-3 py-2 border rounded-md bg-background"
               placeholder="john.doe@example.com"
             />
           </div>
@@ -110,7 +143,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle }) => {
             type="tel"
             value={formState.phone}
             onChange={handleInputChange}
-            className="px-3 py-2 border rounded-md"
+            className="px-3 py-2 border rounded-md bg-background"
             placeholder="+1 (123) 456-7890"
           />
         </div>
@@ -125,7 +158,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle }) => {
             type="file"
             required
             onChange={handleFileChange}
-            className="px-3 py-2 border rounded-md"
+            className="px-3 py-2 border rounded-md bg-background"
             accept=".pdf,.doc,.docx"
           />
           <p className="text-xs text-muted-foreground">
@@ -143,7 +176,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle }) => {
             rows={6}
             value={formState.coverLetter}
             onChange={handleInputChange}
-            className="px-3 py-2 border rounded-md resize-none"
+            className="px-3 py-2 border rounded-md resize-none bg-background"
             placeholder="Tell us why you're a good fit for this position..."
           ></textarea>
         </div>
