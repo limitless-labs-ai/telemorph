@@ -1,19 +1,32 @@
-# Limitless Labs - Modern SaaS Boilerplate
+# TeleMorph - Modern Telecommunications Platform
 
-A production-ready boilerplate for building full-stack SaaS applications with Next.js, TypeScript, and Tailwind CSS. This template provides a solid foundation for creating scalable web applications with modern best practices and a beautiful UI.
+A modern, full-stack web application for TeleMorph's telecommunications platform built with Next.js, TypeScript, and Tailwind CSS. This application provides a comprehensive digital presence with contact management, career opportunities, and modern UI components.
 
 ## Features
 
 - 🚀 **Next.js 15** with App Router
 - 💎 **TypeScript** for type safety
-- 🎨 **Tailwind CSS** for styling
-- 🌙 **Dark Mode** support
-- 📱 **Responsive Design**
-- ⚡ **Performance Optimized**
-- 🔒 **Authentication Ready**
-- 🎯 **SEO Friendly**
-- 📦 **Component Library** with shadcn/ui
-- 🛠 **Modern Development Tools** (ESLint, PostCSS)
+- 🎨 **Tailwind CSS** with custom design system
+- 🌙 **Dark Mode** support (forced dark theme)
+- 📱 **Responsive Design** across all devices
+- ⚡ **Performance Optimized** with motion animations
+- 📧 **Email Integration** with nodemailer for contact forms and job applications
+- 💼 **Dynamic Job Listings** with Markdown-based content management
+- 🎯 **SEO Friendly** with comprehensive metadata
+- 📦 **Component Library** with shadcn/ui and custom components
+- 🎭 **Advanced Animations** with Framer Motion and custom CSS animations
+- 🔔 **Toast Notifications** with Sonner
+- 🎨 **Brand Design System** with custom color palette and gradients
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React 18, TypeScript
+- **Styling**: Tailwind CSS, CSS Variables, Custom Animations
+- **UI Components**: shadcn/ui, Custom Components
+- **Animations**: Framer Motion, CSS Keyframes
+- **Email**: Nodemailer with Gmail SMTP
+- **Content**: Markdown with frontmatter
+- **Development Tools**: ESLint, PostCSS, TypeScript
 
 ## Getting Started
 
@@ -22,107 +35,149 @@ A production-ready boilerplate for building full-stack SaaS applications with Ne
 - Node.js 18.17 or later
 - Docker
 - npm or yarn package manager
+- Gmail account with App Password for email functionality
 
 ### Installation
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/limitless-labs-ai/limitless-framework.git
-cd limitless-framework
+git clone https://github.com/limitless-labs-ai/telemorph.git
+cd telemorph
 ```
 
 2. Install dependencies:
 
 ```bash
 npm install
-# or
-yarn install
 ```
 
-3. Start the development server:
+3. Set up environment variables:
+
+Create a `.env.local` file in the root directory:
+
+```env
+# Email Configuration
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-gmail-app-password
+CONTACT_EMAIL=contact@yourdomain.com
+CAREERS_EMAIL=hr@yourdomain.com
+```
+
+4. Start the development server:
 
 ```bash
 chmod +x start.sh
 ./start.sh
 ```
 
+Open [http://localhost:3000](http://localhost:3000) to view the application.
+
 ## Project Structure
 
 ```
-limitless-framework/
+telemorph/
 ├── src/
-│   ├── app/                 # Next.js app router pages
-│   ├── components/          # Reusable UI components
-│   ├── config/             # Configuration files
-│   │   ├── navlinks.ts     # Navigation configuration
-│   │   ├── logo.ts         # Brand identity settings
-│   │   ├── metadata.ts     # SEO and metadata
-│   │   ├── footer.ts       # Footer configuration
-│   │   ├── feature.ts      # Features section content
-│   │   └── hero.tsx        # Hero section configuration
-│   └── lib/                # Utility functions and shared logic
-├── public/                 # Static assets
-├── components.json         # UI components configuration
-├── tailwind.config.js      # Tailwind CSS configuration
-└── tsconfig.json          # TypeScript configuration
+│   ├── app/                     # Next.js app router
+│   │   ├── (landing)/          # Landing page routes
+│   │   │   ├── contact/        # Contact page
+│   │   │   └── careers/        # Careers page with dynamic job listings
+│   │   ├── api/                # API routes
+│   │   │   ├── contact/        # Contact form API
+│   │   │   └── careers/        # Job application API
+│   │   ├── globals.css         # Global styles and CSS variables
+│   │   └── layout.tsx          # Root layout with theme provider
+│   ├── components/             # Reusable UI components
+│   │   ├── ui/                 # shadcn/ui components
+│   │   ├── Landing Page/       # Landing page specific components
+│   │   ├── Careers/            # Career page components
+│   │   ├── Navbar.tsx          # Navigation component
+│   │   ├── Footer.tsx          # Footer component
+│   │   └── Utilities/          # Utility components
+│   ├── config/                 # Configuration files
+│   │   ├── landing/            # Landing page configurations
+│   │   ├── contact.ts          # Contact page configuration
+│   │   └── career.ts           # Career page configuration
+│   ├── lib/                    # Utility functions
+│   │   ├── jobs.ts             # Job listing utilities
+│   │   └── utils.ts            # General utilities
+│   └── jobs/                   # Markdown job listings
+├── public/                     # Static assets
+├── components.json             # shadcn/ui configuration
+├── tailwind.config.js          # Tailwind CSS configuration
+└── tsconfig.json              # TypeScript configuration
 ```
 
 ## Configuration
 
-The project uses a configuration-based approach to manage various aspects of the application. All configuration files are located in the `src/config` directory:
+### Brand Colors
 
-### Navigation (`navlinks.ts`)
+The application uses a custom color palette defined in CSS variables:
 
-- Defines the main navigation structure
-- Configure navigation items with display names, paths, and icons
+- **Primary**: `#0fd12c` (TeleMorph Green)
+- **Secondary**: `#6e2fff` (Purple)
+- **Accent**: `#74d371` (Light Green)
+- **Indigo Theme**: `#6366f1` series
 
-### Brand Identity (`logo.ts`)
+### Email Setup
 
-- Centralizes brand identity settings
-- Configure brand name, logo, and styling
+For email functionality to work:
 
-### Metadata (`metadata.ts`)
+1. Enable 2-Step Verification in your Google Account
+2. Generate an App Password:
+   - Go to Google Account → Security → 2-Step Verification → App passwords
+   - Select "Mail" and "Other" → Name it "TeleMorph"
+   - Use the generated 16-character password in `EMAIL_PASSWORD`
 
-- Manages SEO and metadata settings
-- Configure site name, URL, and social media handles
+### Job Listings
 
-### Footer (`footer.ts`)
+Jobs are managed through Markdown files in the `src/jobs/` directory:
 
-- Controls the site-wide footer configuration
-- Define company information and links
+```markdown
+---
+title: "Software Engineer"
+department: "Engineering"
+location: "Remote"
+employmentType: "Full-time"
+date: "2024-01-15"
+---
 
-### Features (`feature.ts`)
+# Job Description
 
-- Manages the features section content
-- Configure feature cards and layout
+Content in Markdown format...
+```
 
-### Hero Section (`hero.tsx`)
+## Features Overview
 
-- Controls the hero section content
-- Configure headlines and call-to-action buttons
+### Contact Form
 
-## Customization
+- Multi-field contact form with validation
+- Email notifications via nodemailer
+- Toast notifications for user feedback
+- Dark mode optimized styling
 
-1. **Styling**: Modify `tailwind.config.js` to customize the design system
-2. **Components**: Edit components in `src/components` directory
-3. **Configuration**: Update files in `src/config` to modify content and layout
-4. **Pages**: Add or modify pages in `src/app` directory
+### Careers System
+
+- Dynamic job listings from Markdown files
+- Department-based organization
+- Individual job detail pages
+- Job application form with file upload
+- Resume attachment via email
+- Cover letter support
+
+### UI Components
+
+- Custom text reveal animations
+- Gradient backgrounds with animations
+- Responsive navigation
+- Dark theme throughout
+- Motion animations for interactions
 
 ## Development
 
 ```bash
 # Run development server
 npm run dev
-
-# Run Supabase instance
-npm run db:start
-
-# Stop Supabase instance
-npm run db:stop
-
-# Open Supabase Studio
-npm run db:studio
 
 # Build for production
 npm run build
@@ -132,72 +187,65 @@ npm run start
 
 # Run linting
 npm run lint
+
+# Type checking
+npm run type-check
 ```
+
+## Email Functionality
+
+The application includes comprehensive email functionality:
+
+### Contact Form (`/contact`)
+
+- Sends structured emails with contact information
+- Includes company details if provided
+- Professional HTML email formatting
+
+### Job Applications (`/careers/[id]`)
+
+- Processes job applications with file uploads
+- Attaches resumes as email attachments
+- Includes cover letter content
+- Validates file types and sizes (5MB limit)
+
+## Deployment
+
+### Environment Variables
+
+Ensure these variables are set in your production environment:
+
+```env
+EMAIL_USER=your-production-email@domain.com
+EMAIL_PASSWORD=your-app-password
+CONTACT_EMAIL=contact@telemorph.com
+CAREERS_EMAIL=hr@telemorph.com
+```
+
+### Build Process
+
+```bash
+npm run build
+```
+
+The application is optimized for deployment on platforms like Vercel, Netlify, or any Node.js hosting service.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## Copyright
+## License
 
-This project is the proprietary property of Limitless Labs AI and is intended for use by authorized personnel only. Unauthorized access, use, or distribution is strictly prohibited.
+This project is proprietary to TeleMorph. All rights reserved.
 
-# Job Listings Management
+## Support
 
-This directory contains the job listings for the careers page. Each job is stored as a Markdown file with frontmatter metadata.
+For support and questions, please contact the development team or create an issue in the repository.
 
-## Adding a New Job Listing
-
-To add a new job listing:
-
-1. Create a new Markdown file in this directory with a unique identifier (e.g., `job-004.md`)
-2. Include the following frontmatter at the top of the file:
-
-```markdown
 ---
-title: "Job Title"
-department: "Department Name"
-location: "Location (e.g., Remote, City, etc.)"
-employmentType: "Employment Type (e.g., Full-time, Part-time, Contract)"
-date: "YYYY-MM-DD"
----
-```
 
-3. Write the job description in Markdown format below the frontmatter. Use headings (# and ##) to organize the content.
-
-Example structure:
-
-```markdown
-# Job Title
-
-General introduction and overview of the position.
-
-## Requirements:
-
-- Requirement 1
-- Requirement 2
-- Requirement 3
-
-## Responsibilities:
-
-- Responsibility 1
-- Responsibility 2
-- Responsibility 3
-
-## Benefits:
-
-- Benefit 1
-- Benefit 2
-- Benefit 3
-```
-
-## Updating or Removing a Job Listing
-
-- To update a job listing, edit the corresponding Markdown file.
-- To remove a job listing, delete the corresponding Markdown file.
-
-## Important Notes
-
-- New jobs will automatically appear on the careers page after deployment.
-- Jobs are sorted by date, with the newest jobs appearing first.
-- The job ID used in the URL is derived from the filename (without the `.md` extension).
+Built with ❤️ by the TeleMorph development team
