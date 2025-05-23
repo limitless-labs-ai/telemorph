@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 
 // Configure your email service credentials with explicit SMTP settings
 const transporter = nodemailer.createTransport({
@@ -18,6 +19,35 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(request: Request) {
   try {
+    // Get client IP for rate limiting
+    const clientIP = getClientIP(request);
+    console.log("Contact form request from IP:", clientIP);
+
+    // Check rate limit (2 minutes)
+    const rateLimitResult = checkRateLimit(
+      `contact_${clientIP}`,
+      2 * 60 * 1000
+    );
+
+    if (!rateLimitResult.allowed) {
+      console.log("Rate limit exceeded for IP:", clientIP);
+      return NextResponse.json(
+        {
+          error: "Rate limit exceeded",
+          message: rateLimitResult.message,
+          timeUntilReset: rateLimitResult.timeUntilReset,
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": Math.ceil(
+              rateLimitResult.timeUntilReset / 1000
+            ).toString(),
+          },
+        }
+      );
+    }
+
     // Log environment variables (masked for security)
     console.log("Email config check:");
     console.log("EMAIL_USER set:", !!process.env.EMAIL_USER);
@@ -57,6 +87,10 @@ export async function POST(request: Request) {
         <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
+        <hr>
+        <p style="color: #666; font-size: 12px;">
+          Sender IP: ${clientIP} | Submitted via TeleMorph contact form
+        </p>
       `,
     };
 
@@ -71,21 +105,27 @@ export async function POST(request: Request) {
         { message: "Email sent successfully" },
         { status: 200 }
       );
-    } catch (emailError: any) {
-      console.error("Nodemailer error:", emailError.message);
+    } catch (emailError: unknown) {
+      const errorMessage =
+        emailError instanceof Error
+          ? emailError.message
+          : "Unknown email error";
+      console.error("Nodemailer error:", errorMessage);
       console.error("Error details:", emailError);
 
       return NextResponse.json(
-        { error: `Email service error: ${emailError.message}` },
+        { error: `Email service error: ${errorMessage}` },
         { status: 500 }
       );
     }
-  } catch (error: any) {
-    console.error("General error:", error.message);
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    console.error("General error:", errorMessage);
     console.error("Error details:", error);
 
     return NextResponse.json(
-      { error: `Failed to send email: ${error.message}` },
+      { error: `Failed to send email: ${errorMessage}` },
       { status: 500 }
     );
   }

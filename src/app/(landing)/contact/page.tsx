@@ -59,6 +59,15 @@ function Contact() {
       const data = await response.json();
 
       if (!response.ok) {
+        // Handle rate limiting specifically
+        if (response.status === 429) {
+          toast.error(
+            data.message ||
+              "You're sending messages too quickly. Please wait before trying again."
+          );
+          return;
+        }
+
         throw new Error(data.error || "Failed to send message");
       }
 
@@ -74,13 +83,13 @@ function Contact() {
 
       // Show success message
       toast.success("Your message has been sent successfully!");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error sending message:", error);
 
       // Display more detailed error message
-      toast.error(
-        `Failed to send message: ${error.message || "Unknown error"}`
-      );
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
+      toast.error(`Failed to send message: ${errorMessage}`);
     } finally {
       setIsSubmitting(false);
     }

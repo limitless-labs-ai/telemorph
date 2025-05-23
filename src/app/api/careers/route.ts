@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 
 // Configure your email service credentials with explicit SMTP settings
 const transporter = nodemailer.createTransport({
@@ -30,6 +31,35 @@ async function verifyTransporter() {
 
 export async function POST(request: Request) {
   try {
+    // Get client IP for rate limiting
+    const clientIP = getClientIP(request);
+    console.log("Job application request from IP:", clientIP);
+
+    // Check rate limit (2 minutes)
+    const rateLimitResult = checkRateLimit(
+      `careers_${clientIP}`,
+      2 * 60 * 1000
+    );
+
+    if (!rateLimitResult.allowed) {
+      console.log("Rate limit exceeded for job application from IP:", clientIP);
+      return NextResponse.json(
+        {
+          error: "Rate limit exceeded",
+          message: rateLimitResult.message,
+          timeUntilReset: rateLimitResult.timeUntilReset,
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": Math.ceil(
+              rateLimitResult.timeUntilReset / 1000
+            ).toString(),
+          },
+        }
+      );
+    }
+
     // Log environment variables (masked for security)
     console.log("Career application email config check:");
     console.log("EMAIL_USER set:", !!process.env.EMAIL_USER);
@@ -126,7 +156,7 @@ export async function POST(request: Request) {
         <p><strong>Resume:</strong> See attachment (${resume.name})</p>
         <hr>
         <p style="color: #666; font-size: 12px;">
-          This application was submitted through the TeleMorph careers page.
+          Sender IP: ${clientIP} | This application was submitted through the TeleMorph careers page.
         </p>
       `,
       attachments: [
@@ -154,22 +184,36 @@ export async function POST(request: Request) {
         { message: "Application submitted successfully" },
         { status: 200 }
       );
-    } catch (emailError: any) {
-      console.error("Nodemailer error:", emailError.message);
-      console.error("Error code:", emailError.code);
+    } catch (emailError: unknown) {
+      const errorMessage =
+        emailError instanceof Error
+          ? emailError.message
+          : "Unknown email error";
+
+      // Type guard for errors with code property
+      const hasCode = (err: unknown): err is Error & { code: string } => {
+        return err instanceof Error && "code" in err;
+      };
+
+      const errorCode = hasCode(emailError) ? emailError.code : undefined;
+
+      console.error("Nodemailer error:", errorMessage);
+      console.error("Error code:", errorCode);
       console.error("Error details:", emailError);
 
       return NextResponse.json(
-        { error: `Email service error: ${emailError.message}` },
+        { error: `Email service error: ${errorMessage}` },
         { status: 500 }
       );
     }
-  } catch (error: any) {
-    console.error("General error:", error.message);
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    console.error("General error:", errorMessage);
     console.error("Error details:", error);
 
     return NextResponse.json(
-      { error: `Failed to submit application: ${error.message}` },
+      { error: `Failed to submit application: ${errorMessage}` },
       { status: 500 }
     );
   }

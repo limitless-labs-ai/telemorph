@@ -68,16 +68,25 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle }) => {
       const data = await response.json();
 
       if (!response.ok) {
+        // Handle rate limiting specifically
+        if (response.status === 429) {
+          toast.error(
+            data.message ||
+              "You're submitting applications too quickly. Please wait before trying again."
+          );
+          return;
+        }
+
         throw new Error(data.error || "Failed to submit application");
       }
 
       setIsSubmitted(true);
       toast.success("Your application has been submitted successfully!");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error submitting application:", error);
-      toast.error(
-        `Failed to submit application: ${error.message || "Unknown error"}`
-      );
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
+      toast.error(`Failed to submit application: ${errorMessage}`);
     } finally {
       setIsSubmitting(false);
     }
