@@ -69,7 +69,7 @@ const FeatureCard = ({
       }}
       className={cn(
         "bg-card/40 backdrop-blur-sm rounded-3xl border border-border/50 shadow-lg will-change-transform transform-gpu",
-        "hover:border-sidebar-primary/30 hover:shadow-xl transition-all duration-300 group h-full relative overflow-hidden cursor-pointer",
+        "hover:shadow-xl transition-all duration-300 group h-full relative overflow-hidden cursor-pointer",
         sizeClasses[size],
         className
       )}
@@ -78,12 +78,11 @@ const FeatureCard = ({
       <motion.div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 -z-10",
-          "bg-gradient-to-br",
-          colorAccent || "from-sidebar-primary/10 to-primary/10"
+          "bg-gradient-to-br from-foreground/2 to-foreground/3"
         )}
         whileHover={{
           opacity: 1,
-          transition: { duration: 0.3, ease: "easeOut" },
+          transition: { duration: 0.4, ease: "easeOut" },
         }}
       />
 
@@ -126,7 +125,7 @@ const FeatureCard = ({
 
       {/* Title with smooth animation */}
       <motion.h3
-        className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-sidebar-primary"
+        className="text-xl font-bold mb-2 transition-colors duration-300"
         initial={{ opacity: 0, x: -10 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
         transition={{
@@ -144,7 +143,7 @@ const FeatureCard = ({
 
       {/* Description with smooth reveal */}
       <motion.p
-        className="text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/90"
+        className="text-muted-foreground leading-relaxed transition-colors duration-300"
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
         transition={{
@@ -159,11 +158,6 @@ const FeatureCard = ({
       {/* Subtle bottom accent line */}
       <motion.div
         className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-sidebar-primary to-primary opacity-0 rounded-full"
-        whileHover={{
-          opacity: 1,
-          scaleX: 1,
-          transition: { duration: 0.4, ease: "easeOut" },
-        }}
         initial={{ scaleX: 0 }}
       />
     </motion.div>
