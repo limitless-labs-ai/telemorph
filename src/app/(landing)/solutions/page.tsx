@@ -19,7 +19,6 @@ import {
   Target,
   Zap,
   CheckCircle,
-  ArrowRight,
   Sparkles,
 } from "lucide-react";
 

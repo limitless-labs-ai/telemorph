@@ -93,7 +93,7 @@ export function Solutions() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {solutions.map((solution, index) => (
+          {solutions.map((solution) => (
             <motion.div
               key={solution.title}
               variants={cardVariants}
