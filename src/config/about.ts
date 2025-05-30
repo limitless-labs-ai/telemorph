@@ -38,7 +38,7 @@ export const about = {
     {
       name: "Anwer Jamil",
       role: "CEO",
-      image: "/images/anwer.jpg",
+      image: "/anwer.jpeg",
       social: [
         {
           name: "Twitter",
@@ -56,26 +56,26 @@ export const about = {
       description:
         "Anwer Jamil, the company's founder and CEO, is the visionary behind teleMorph. Anwer has more than 20+ years of experience in the IT and telecom sectors, and he has developed his skills by working with some of the leading service providers in North America.",
     },
-    {
-      name: "Akram Jamil",
-      role: "CTO",
-      image: "/images/akram.jpg",
-      social: [
-        {
-          name: "Twitter",
-          url: "https://twitter.com/akramjamil",
-        },
-        {
-          name: "Instagram",
-          url: "https://instagram.com/akramjamil",
-        },
-        {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/akramjamil",
-        },
-      ],
-      description:
-        "With a strong track record of driving growth and optimizing financial performance, Christopher is responsible for ensuring the financial stability and sustainability of our organization.",
-    },
+    // {
+    //   name: "Akram Jamil",
+    //   role: "CTO",
+    //   image: "/images/akram.jpg",
+    //   social: [
+    //     {
+    //       name: "Twitter",
+    //       url: "https://twitter.com/akramjamil",
+    //     },
+    //     {
+    //       name: "Instagram",
+    //       url: "https://instagram.com/akramjamil",
+    //     },
+    //     {
+    //       name: "LinkedIn",
+    //       url: "https://linkedin.com/in/akramjamil",
+    //     },
+    //   ],
+    //   description:
+    //     "With a strong track record of driving growth and optimizing financial performance, Christopher is responsible for ensuring the financial stability and sustainability of our organization.",
+    // },
   ],
 };

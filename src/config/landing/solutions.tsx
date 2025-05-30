@@ -3,7 +3,7 @@ export const solutions = [
     title: "Technology",
     description:
       "We begin by thoroughly understanding your business goals, ensuring we align our strategies with your vision. Our team of experts then designs customized solutions, carefully crafted to meet your specific needs. This personalized approach guarantees that the strategies we implement are directly aligned with your objectives, maximizing efficiency and driving your business forward.",
-    image: "/images/solutions/technology.svg",
+    image: "/technology.png",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -24,7 +24,7 @@ export const solutions = [
     title: "Management",
     description:
       "Device procurement and management by teleMorph streamlines acquiring, setting up, and supporting equipment to boost productivity, security, and cost-efficiency. Acting as a one-stop shop, teleMorph partners with multiple providers, offering seamless service through a web portal or 24/7 support, eliminating the hassle of dealing with multiple businesses.",
-    image: "/images/solutions/management.svg",
+    image: "/management.png",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -45,7 +45,7 @@ export const solutions = [
     title: "Cost-Savings",
     description:
       "TeleMorph specializes in making IT services more efficient and cost-effective by negotiating service contracts. We specialize in reducing expenditure, increasing service standards and introducing new and improved services, allowing you to get the best deal possible. Whether for mobile, internet or landline services, teleMorph will ensure you get the best value for your money.",
-    image: "/images/solutions/cost-savings.svg",
+    image: "/expense_management.png",
     icon: (
       <svg
         viewBox="0 0 24 24"

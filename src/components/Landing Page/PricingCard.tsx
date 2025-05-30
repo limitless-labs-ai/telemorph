@@ -2,6 +2,7 @@
 import React from "react";
 import { Check } from "lucide-react";
 import { ArrowButton } from "@/components/ui/arrow-button";
+import Link from "next/link";
 
 function PricingCard({
   title,
@@ -67,15 +68,17 @@ function PricingCard({
         ))}
       </ul>
 
-      <ArrowButton
-        className="w-full"
-        variant={isPopular ? "default" : "secondary"}
-        onClick={() => {
-          console.log(`Button clicked for ${title}`);
-        }}
-      >
-        {buttonText}
-      </ArrowButton>
+      <Link href="/contact">
+        <ArrowButton
+          className="w-full"
+          variant={isPopular ? "default" : "secondary"}
+          onClick={() => {
+            console.log(`Button clicked for ${title}`);
+          }}
+        >
+          {buttonText}
+        </ArrowButton>
+      </Link>
     </div>
   );
 }

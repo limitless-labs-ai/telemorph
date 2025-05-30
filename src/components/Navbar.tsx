@@ -5,12 +5,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowButton } from "@/components/ui/arrow-button";
-import { navLinks, App, ButtonText } from "@/config/landing/navlinks";
-import Logo from "@/components/Logo";
+import {
+  navLinks,
+  App,
+  ButtonText,
+  LogoConfig,
+} from "@/config/landing/navlinks";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,7 +73,14 @@ export function Navbar() {
             className="flex items-center space-x-2"
           >
             <Link href="/#home">
-              <Logo />
+              <Image
+                src={LogoConfig.src}
+                alt={LogoConfig.alt}
+                width={LogoConfig.width}
+                height={LogoConfig.height}
+                className="object-contain"
+                priority
+              />
             </Link>
           </motion.div>
 

@@ -9,54 +9,114 @@ import { ArrowButton } from "@/components/ui/arrow-button";
 const TitleComponent = (
   <div className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      className="relative z-10 max-w-5xl mx-auto px-4 text-center"
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      }}
+      className="relative z-10 max-w-5xl mx-auto px-4 text-center will-change-transform"
     >
       <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-        className="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-6"
+        initial={{ opacity: 0, y: 30, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          duration: 0.9,
+          delay: 0.2,
+          ease: [0.25, 0.46, 0.45, 0.94],
+          type: "spring",
+          stiffness: 120,
+          damping: 12,
+        }}
+        className="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-6 will-change-transform"
       >
         Empower business with
-        <span className="block text-[var(--brand-primary)] mt-2">
+        <motion.span
+          className="block text-[var(--brand-primary)] mt-2"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            ease: "easeOut",
+          }}
+        >
           modern technology solutions
-        </span>
+        </motion.span>
       </motion.h1>
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.5 }}
-        className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto"
+        transition={{
+          duration: 0.8,
+          delay: 0.6,
+          ease: [0.25, 0.46, 0.45, 0.94],
+        }}
+        className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto will-change-transform"
       >
         TeleMorph is a leading technology company specializing in providing
         innovative software solutions and IT services
       </motion.p>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.7 }}
-        className="flex flex-col sm:flex-row gap-4 mt-12 justify-center"
+        initial={{ opacity: 0, y: 30, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.8,
+          ease: [0.25, 0.46, 0.45, 0.94],
+          type: "spring",
+          stiffness: 120,
+          damping: 12,
+        }}
+        className="flex flex-col sm:flex-row gap-4 mt-12 justify-center will-change-transform"
       >
-        <Link href={App}>
-          <ArrowButton
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-[var(--brand-primary-dark)] min-w-[180px] text-lg"
-          >
-            Learn more
-          </ArrowButton>
-        </Link>
-        <ArrowButton
-          size="lg"
-          variant="outline"
-          className="border-foreground text-foreground hover:bg-foreground/10 min-w-[180px] text-lg"
+        <motion.div
+          whileHover={{
+            scale: 1.05,
+            y: -2,
+            transition: { duration: 0.3, ease: "easeOut" },
+          }}
+          whileTap={{
+            scale: 0.95,
+            transition: { duration: 0.1 },
+          }}
         >
-          Contact Us
-        </ArrowButton>
+          <Link href="/solutions" className="w-full sm:w-auto">
+            <ArrowButton
+              size="lg"
+              variant="outline"
+              className="bg-primary text-white hover:bg-[var(--brand-primary-dark)] min-w-[180px] text-lg w-full sm:w-auto transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Learn more
+            </ArrowButton>
+          </Link>
+        </motion.div>
+
+        <motion.div
+          whileHover={{
+            scale: 1.05,
+            y: -2,
+            transition: { duration: 0.3, ease: "easeOut" },
+          }}
+          whileTap={{
+            scale: 0.95,
+            transition: { duration: 0.1 },
+          }}
+        >
+          <Link href={App} className="w-full sm:w-auto">
+            <ArrowButton
+              size="lg"
+              className="bg-[var(--brand-secondary)] text-white hover:bg-[var(--brand-secondary)]/90 min-w-[180px] text-lg w-full sm:w-auto transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Contact Us
+            </ArrowButton>
+          </Link>
+        </motion.div>
       </motion.div>
     </motion.div>
   </div>
@@ -66,11 +126,36 @@ const TitleComponent = (
 const DashboardComponent = (
   <div className="flex items-center justify-center h-full">
     {/* Mini Dashboard */}
-    <div className="w-full h-full flex flex-col">
+    <motion.div
+      className="w-full h-full flex flex-col"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 1.2,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+    >
       {/* Dashboard Header */}
-      <div className="bg-card/80 border-b border-border/50 p-4 flex items-center justify-between">
+      <motion.div
+        className="bg-card/80 border-b border-border/50 p-4 flex items-center justify-between backdrop-blur-sm"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: 1.4,
+          ease: "easeOut",
+        }}
+      >
         <div className="flex items-center gap-3">
-          <div className="bg-sidebar-primary/20 w-8 h-8 rounded-full flex items-center justify-center">
+          <motion.div
+            className="bg-sidebar-primary/20 w-8 h-8 rounded-full flex items-center justify-center"
+            whileHover={{
+              scale: 1.1,
+              rotate: 360,
+              transition: { duration: 0.5 },
+            }}
+          >
             <svg
               className="w-4 h-4 text-sidebar-primary"
               fill="none"
@@ -85,11 +170,17 @@ const DashboardComponent = (
                 d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
               ></path>
             </svg>
-          </div>
+          </motion.div>
           <h2 className="font-medium text-lg">Business Dashboard</h2>
         </div>
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
+          <motion.div
+            className="w-8 h-8 rounded-full bg-accent flex items-center justify-center"
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.2 },
+            }}
+          >
             <svg
               className="w-4 h-4"
               fill="none"
@@ -104,18 +195,48 @@ const DashboardComponent = (
                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
               ></path>
             </svg>
-          </div>
-          <div className="w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center">
+          </motion.div>
+          <motion.div
+            className="w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center"
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.2 },
+            }}
+          >
             <span className="text-xs font-semibold">AB</span>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Dashboard Content */}
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-background/30 backdrop-blur-sm">
+      <motion.div
+        className="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-background/30 backdrop-blur-sm"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          delay: 1.6,
+          ease: [0.25, 0.46, 0.45, 0.94],
+        }}
+      >
         {/* Sidebar */}
-        <div className="md:col-span-1 bg-card/60 rounded-xl border border-border/50 p-4 flex flex-col gap-3">
-          <div className="flex items-center gap-3 p-2 bg-sidebar-primary/10 rounded-lg">
+        <motion.div
+          className="md:col-span-1 bg-card/60 rounded-xl border border-border/50 p-4 flex flex-col gap-3 backdrop-blur-sm"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 1.8,
+            ease: "easeOut",
+          }}
+        >
+          <motion.div
+            className="flex items-center gap-3 p-2 bg-sidebar-primary/10 rounded-lg"
+            whileHover={{
+              backgroundColor: "rgba(var(--sidebar-primary-rgb), 0.15)",
+              transition: { duration: 0.2 },
+            }}
+          >
             <svg
               className="w-5 h-5 text-sidebar-primary"
               fill="none"
@@ -131,9 +252,15 @@ const DashboardComponent = (
               ></path>
             </svg>
             <span className="font-medium">Dashboard</span>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-3 p-2 hover:bg-accent/20 rounded-lg transition-colors">
+          <motion.div
+            className="flex items-center gap-3 p-2 hover:bg-accent/20 rounded-lg transition-colors cursor-pointer"
+            whileHover={{
+              x: 5,
+              transition: { duration: 0.2 },
+            }}
+          >
             <svg
               className="w-5 h-5 text-muted-foreground"
               fill="none"
@@ -149,9 +276,15 @@ const DashboardComponent = (
               ></path>
             </svg>
             <span className="text-muted-foreground">Products</span>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-3 p-2 hover:bg-accent/20 rounded-lg transition-colors">
+          <motion.div
+            className="flex items-center gap-3 p-2 hover:bg-accent/20 rounded-lg transition-colors cursor-pointer"
+            whileHover={{
+              x: 5,
+              transition: { duration: 0.2 },
+            }}
+          >
             <svg
               className="w-5 h-5 text-muted-foreground"
               fill="none"
@@ -167,9 +300,15 @@ const DashboardComponent = (
               ></path>
             </svg>
             <span className="text-muted-foreground">Customers</span>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-3 p-2 hover:bg-accent/20 rounded-lg transition-colors">
+          <motion.div
+            className="flex items-center gap-3 p-2 hover:bg-accent/20 rounded-lg transition-colors cursor-pointer"
+            whileHover={{
+              x: 5,
+              transition: { duration: 0.2 },
+            }}
+          >
             <svg
               className="w-5 h-5 text-muted-foreground"
               fill="none"
@@ -185,13 +324,29 @@ const DashboardComponent = (
               ></path>
             </svg>
             <span className="text-muted-foreground">Analytics</span>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Main Content */}
-        <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <motion.div
+          className="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 2.0,
+            ease: "easeOut",
+          }}
+        >
           {/* Stats Cards */}
-          <div className="bg-card/60 rounded-xl border border-border/50 p-4 flex flex-col">
+          <motion.div
+            className="bg-card/60 rounded-xl border border-border/50 p-4 flex flex-col backdrop-blur-sm"
+            whileHover={{
+              scale: 1.02,
+              y: -2,
+              transition: { duration: 0.2 },
+            }}
+          >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm text-muted-foreground">Revenue</span>
               <div className="bg-green-500/10 text-green-500 text-xs font-medium py-1 px-2 rounded-full">
@@ -205,9 +360,16 @@ const DashboardComponent = (
             <div className="mt-4 h-2 bg-accent/30 rounded-full overflow-hidden">
               <div className="h-full w-3/4 bg-sidebar-primary rounded-full"></div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-card/60 rounded-xl border border-border/50 p-4 flex flex-col">
+          <motion.div
+            className="bg-card/60 rounded-xl border border-border/50 p-4 flex flex-col backdrop-blur-sm"
+            whileHover={{
+              scale: 1.02,
+              y: -2,
+              transition: { duration: 0.2 },
+            }}
+          >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm text-muted-foreground">
                 New Customers
@@ -223,9 +385,16 @@ const DashboardComponent = (
             <div className="mt-4 h-2 bg-accent/30 rounded-full overflow-hidden">
               <div className="h-full w-2/3 bg-chart-2 rounded-full"></div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-card/60 rounded-xl border border-border/50 p-4 flex flex-col">
+          <motion.div
+            className="bg-card/60 rounded-xl border border-border/50 p-4 flex flex-col backdrop-blur-sm"
+            whileHover={{
+              scale: 1.02,
+              y: -2,
+              transition: { duration: 0.2 },
+            }}
+          >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm text-muted-foreground">
                 Active Users
@@ -241,10 +410,19 @@ const DashboardComponent = (
             <div className="mt-4 h-2 bg-accent/30 rounded-full overflow-hidden">
               <div className="h-full w-4/5 bg-chart-5 rounded-full"></div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Chart Area */}
-          <div className="md:col-span-3 bg-card/60 rounded-xl border border-border/50 p-4">
+          <motion.div
+            className="md:col-span-3 bg-card/60 rounded-xl border border-border/50 p-4 backdrop-blur-sm"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: 2.4,
+              ease: "easeOut",
+            }}
+          >
             <div className="flex items-center justify-between mb-6">
               <h3 className="font-medium">Performance Overview</h3>
               <div className="flex items-center gap-2 text-xs">
@@ -281,10 +459,10 @@ const DashboardComponent = (
                 )
               )}
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   </div>
 );
 

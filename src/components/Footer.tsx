@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -30,7 +31,7 @@ export function Footer() {
 
   return (
     <motion.footer
-      className="bg-card/40 backdrop-blur-lg border-t border-border/50 mt-24"
+      className="bg-card/40 backdrop-blur-lg border-t border-border/50 mt-24 relative z-10"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -48,9 +49,14 @@ export function Footer() {
           >
             <motion.div variants={fadeInUp}>
               <Link href="/">
-                <span className="text-xl font-bold bg-gradient-to-r from-primary to-sidebar-primary bg-clip-text text-transparent">
-                  {footerConfig.company.name}
-                </span>
+                <Image
+                  src={footerConfig.company.logo}
+                  alt="TeleMorph Logo"
+                  width={120}
+                  height={40}
+                  className="object-contain"
+                  priority
+                />
               </Link>
             </motion.div>
             <motion.p

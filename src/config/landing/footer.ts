@@ -54,7 +54,7 @@ const footerConfig: FooterConfig = {
   // DO NOT EDIT THIS SECTION
   company: {
     name: Brand.name_half1 + Brand.name_half2,
-    logo: Brand.logo,
+    logo: "/tmlong_white.png",
     description: Brand.description,
   },
   // ------------------------------
@@ -82,8 +82,8 @@ const footerConfig: FooterConfig = {
       links: [
         { name: "Privacy Policy", href: "/privacy-policy" },
         { name: "Terms of Service", href: "/terms-of-service" },
-        { name: "Refund Policy", href: "/refund-policy" },
-        { name: "Affiliate Terms", href: "/affiliate-terms" },
+        // { name: "Refund Policy", href: "/refund-policy" },
+        // { name: "Affiliate Terms", href: "/affiliate-terms" },
       ],
     },
   ],

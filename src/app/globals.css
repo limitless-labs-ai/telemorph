@@ -14,6 +14,9 @@
 
 .animate-scroll {
   animation: scroll var(--animation-duration) linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .article {
@@ -227,101 +230,107 @@
   }
 }
 
-/* Animation classes */
+/* Enhanced Animation classes with GPU acceleration */
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateZ(0);
   }
   to {
     opacity: 1;
+    transform: translateZ(0);
   }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(20px) translateZ(0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   opacity: 0;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.5s ease-out forwards;
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   opacity: 0;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
-/* Gradient Animations */
+/* Optimized Gradient Animations */
 @keyframes drift-x {
   0%,
   100% {
-    transform: translateX(0);
+    transform: translateX(0) translateZ(0);
   }
   20% {
-    transform: translateX(-15%);
+    transform: translateX(-15%) translateZ(0);
   }
   40% {
-    transform: translateX(10%);
+    transform: translateX(10%) translateZ(0);
   }
   60% {
-    transform: translateX(-5%);
+    transform: translateX(-5%) translateZ(0);
   }
   80% {
-    transform: translateX(15%);
+    transform: translateX(15%) translateZ(0);
   }
 }
 
 @keyframes drift-y {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
   25% {
-    transform: translateY(-15%);
+    transform: translateY(-15%) translateZ(0);
   }
   50% {
-    transform: translateY(10%);
+    transform: translateY(10%) translateZ(0);
   }
   75% {
-    transform: translateY(-10%);
+    transform: translateY(-10%) translateZ(0);
   }
 }
 
 @keyframes rotate {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) translateZ(0);
   }
   25% {
-    transform: rotate(45deg);
+    transform: rotate(45deg) translateZ(0);
   }
   50% {
-    transform: rotate(-20deg);
+    transform: rotate(-20deg) translateZ(0);
   }
   75% {
-    transform: rotate(60deg);
+    transform: rotate(60deg) translateZ(0);
   }
   100% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) translateZ(0);
   }
 }
 
 @keyframes scale {
   0%,
   100% {
-    transform: scale(1);
+    transform: scale(1) translateZ(0);
   }
   30% {
-    transform: scale(1.1);
+    transform: scale(1.1) translateZ(0);
   }
   60% {
-    transform: scale(0.9);
+    transform: scale(0.9) translateZ(0);
   }
 }
 
@@ -346,6 +355,9 @@
     rotate 35s infinite ease-in-out, scale 20s infinite ease-in-out,
     gradient-opacity 15s infinite ease-in-out;
   animation-direction: alternate;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .animate-gradient-2 {
@@ -354,4 +366,21 @@
     rotate 40s infinite ease-in-out reverse, scale 25s infinite ease-in-out,
     gradient-opacity 20s infinite ease-in-out;
   animation-direction: alternate;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Performance optimizations for motion elements */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-contents {
+  will-change: contents;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

@@ -3,11 +3,37 @@ import React, { useState, useRef, useEffect } from "react";
 import PageLayout from "@/components/Utilities/PageLayout";
 import PricingCard from "@/components/Landing Page/PricingCard";
 import { pricing, pricingTitles } from "@/config/pricing";
+import {
+  missionContent,
+  solutionsContent,
+} from "@/config/landing/solutions-content";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Shield,
+  Wrench,
+  Truck,
+  DollarSign,
+  Package,
+  Star,
+  Target,
+  Zap,
+  CheckCircle,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
 
 function SolutionsContent() {
   const servicesRef = useRef<HTMLDivElement>(null);
+
+  // Icon mapping for each solution
+  const solutionIcons = [
+    Package, // Procurement & Management
+    Shield, // Data Management & Security
+    Wrench, // Maintenance & Support
+    Truck, // ELD Solutions
+    DollarSign, // Expense Management
+  ];
 
   useEffect(() => {
     if (servicesRef.current) {
@@ -46,314 +72,155 @@ function SolutionsContent() {
         style={{ animationDelay: "1.5s" }}
       ></div>
 
+      {/* Floating icons decoration */}
+      <div className="absolute top-32 left-20 opacity-10 animate-float">
+        <Sparkles className="w-8 h-8 text-primary" />
+      </div>
+      <div
+        className="absolute top-64 right-32 opacity-10 animate-float"
+        style={{ animationDelay: "2s" }}
+      >
+        <Target className="w-6 h-6 text-primary" />
+      </div>
+      <div
+        className="absolute bottom-96 left-32 opacity-10 animate-float"
+        style={{ animationDelay: "4s" }}
+      >
+        <Zap className="w-7 h-7 text-primary" />
+      </div>
+
       <div className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        {/* Mission Section */}
+        {/* Mission Section - Fixed: removed problematic border decoration */}
         <section className="mb-24 relative fade-in-up">
-          <div className="absolute -top-10 -left-10 w-24 h-24 border-t-2 border-l-2 border-primary/30 rounded-tl-lg"></div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--brand-primary)] relative">
-            Our Mission
-            <div className="h-1 w-16 bg-primary mt-2"></div>
-          </h2>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
+              <Star className="w-6 h-6 text-primary" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-[var(--brand-primary)] relative">
+              {missionContent.title}
+              <div className="h-1 w-16 bg-primary mt-2"></div>
+            </h2>
+          </div>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl">
-            TeleMorph, the leading telecom management company in North America,
-            is renowned for its steadfast commitment to excellence,
-            responsibility, and leadership. Our goal is to offer our clients a
-            personalized corporate structure that offers unmatched assurance,
-            adaptability, security, resources, and cost-effectiveness. Our goal
-            is to lead the telecom/IT services and management sector by
-            providing solutions that enable current leaders to scale new
-            heights.
-          </p>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-            Through our 24/7 support line or adaptable web interface, our
-            customers can always count on us to give them the service they need,
-            whenever they need it. At TeleMorph we are dedicated to providing
-            comprehensive and innovative IT services to businesses of all sizes,
-            empowering them to navigate the ever-evolving digital landscape with
-            ease.
+            {missionContent.description}
           </p>
           <div
-            className="mt-10 p-6 bg-primary/5 rounded-lg border border-primary/10 shadow-sm fade-in"
+            className="mt-10 p-6 bg-primary/5 rounded-lg border border-primary/10 shadow-sm fade-in hover:bg-primary/8 transition-all duration-300"
             style={{ animationDelay: "300ms" }}
           >
-            <p className="text-foreground font-medium text-lg">
-              Our expertise spans across five core service areas, each tailored
-              to cater to your unique business needs.
-            </p>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+              <p className="text-foreground font-medium text-lg">
+                Our expertise spans across five core service areas, each
+                tailored to cater to your unique business needs.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* Service Sections */}
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
-          Our Solutions
-          <div className="h-1 w-16 bg-primary mt-2 mx-auto"></div>
-        </h2>
-
-        <div ref={servicesRef} className="space-y-20">
-          <section className="service-section transition-all duration-700 opacity-0 translate-y-10">
-            <div className="flex flex-col md:flex-row gap-8 items-center mb-6 md:mb-10">
-              <div className="flex-1 order-2 md:order-1">
-                <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground flex items-center">
-                  <span className="w-8 h-8 bg-primary/20 flex items-center justify-center rounded-full text-primary mr-3">
-                    1
-                  </span>
-                  Procurement & Management
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Device procurement and management involves acquiring,
-                  configuring, and overseeing IT equipment like smartphones and
-                  tablets for a business. This includes selecting the right
-                  devices, negotiating contracts with carriers and vendors,
-                  deploying and setting up the equipment, providing ongoing
-                  support, troubleshooting, and managing the devices&apos;
-                  end-of-life cycle. The goal is to equip employees with the
-                  necessary tools to enhance efficiency, security, and
-                  cost-effectiveness.
-                </p>
-                <button className="mt-6 inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
-                  Learn more
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="flex-1 flex justify-center order-1 md:order-2">
-                <div className="relative group p-2">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl group-hover:blur-lg transform transition-all duration-300"></div>
-                  <Image
-                    src="/images/solutions/technology.svg"
-                    alt="Procurement & Management"
-                    width={280}
-                    height={280}
-                    className="relative rounded-xl object-contain bg-[var(--brand-primary)]/5 p-6 transition-all duration-500 group-hover:scale-105"
-                  />
-                </div>
-              </div>
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+              <Target className="w-5 h-5 text-primary" />
             </div>
-          </section>
-
-          <section className="service-section transition-all duration-700 opacity-0 translate-y-10">
-            <div className="flex flex-col md:flex-row gap-8 items-center mb-6 md:mb-10">
-              <div className="flex-1 flex justify-center">
-                <div className="relative group p-2">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/20 rounded-2xl blur-xl group-hover:blur-lg transform transition-all duration-300"></div>
-                  <Image
-                    src="/images/solutions/management.svg"
-                    alt="Data Management & Security"
-                    width={280}
-                    height={280}
-                    className="relative rounded-xl object-contain bg-[var(--brand-primary)]/5 p-6 transition-all duration-500 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground flex items-center">
-                  <span className="w-8 h-8 bg-primary/20 flex items-center justify-center rounded-full text-primary mr-3">
-                    2
-                  </span>
-                  Data Management & Security
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Device security and data management involves safeguarding
-                  sensitive information stored on and transmitted by IT devices.
-                  This includes implementing secure passwords, encryption,
-                  access restrictions, monitoring usage and network connections,
-                  and ensuring data backups. The goal is to prevent data loss,
-                  theft, or unauthorized access while maintaining
-                  confidentiality. Effective policies, clear usage guidelines,
-                  regular security training, and tools like device management
-                  solutions and security software are essential.
-                </p>
-                <button className="mt-6 inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
-                  Learn more
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <section className="service-section transition-all duration-700 opacity-0 translate-y-10">
-            <div className="flex flex-col md:flex-row gap-8 items-center mb-6 md:mb-10">
-              <div className="flex-1 order-2 md:order-1">
-                <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground flex items-center">
-                  <span className="w-8 h-8 bg-primary/20 flex items-center justify-center rounded-full text-primary mr-3">
-                    3
-                  </span>
-                  Maintenance & Support
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Maintenance and support encompass diagnosing and resolving
-                  both hardware issues, such as cracked screens or battery
-                  problems, and software issues, like sluggish performance or
-                  connectivity problems. These services can be provided by
-                  manufacturers, carriers, or independent repair shops. The goal
-                  is to restore the device&apos;s functionality, ensuring it
-                  operates efficiently so users can remain productive. This
-                  approach helps businesses extend the lifespan and value of
-                  their devices, reducing downtime and avoiding costly
-                  replacements.
-                </p>
-                <button className="mt-6 inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
-                  Learn more
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="flex-1 flex justify-center order-1 md:order-2">
-                <div className="relative group p-2">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl group-hover:blur-lg transform transition-all duration-300"></div>
-                  <Image
-                    src="/images/solutions/maintenance.svg"
-                    alt="Maintenance & Support"
-                    width={280}
-                    height={280}
-                    className="relative rounded-xl object-contain bg-[var(--brand-primary)]/5 p-6 transition-all duration-500 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="service-section transition-all duration-700 opacity-0 translate-y-10">
-            <div className="flex flex-col md:flex-row gap-8 items-center mb-6 md:mb-10">
-              <div className="flex-1 flex justify-center">
-                <div className="relative group p-2">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/20 rounded-2xl blur-xl group-hover:blur-lg transform transition-all duration-300"></div>
-                  <Image
-                    src="/images/solutions/eld.svg"
-                    alt="ELD Solutions"
-                    width={280}
-                    height={280}
-                    className="relative rounded-xl object-contain bg-[var(--brand-primary)]/5 p-6 transition-all duration-500 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground flex items-center">
-                  <span className="w-8 h-8 bg-primary/20 flex items-center justify-center rounded-full text-primary mr-3">
-                    4
-                  </span>
-                  ELD Solutions
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  ELD software development helps trucking companies manage their
-                  logs and increase productivity by creating software and mobile
-                  applications for ELD devices. This entails offering trucking
-                  firms advising and training services on how to use ELD
-                  hardware and software as well as how to adhere to legal
-                  requirements.
-                </p>
-                <button className="mt-6 inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
-                  Learn more
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <section className="service-section transition-all duration-700 opacity-0 translate-y-10">
-            <div className="flex flex-col md:flex-row gap-8 items-center mb-6 md:mb-10">
-              <div className="flex-1 order-2 md:order-1">
-                <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground flex items-center">
-                  <span className="w-8 h-8 bg-primary/20 flex items-center justify-center rounded-full text-primary mr-3">
-                    5
-                  </span>
-                  Expense Management
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Expense management involves monitoring, regulating, and
-                  optimizing business costs related to hardware, service plans,
-                  and other associated expenses. It includes implementing
-                  policies for device management, analyzing usage reports to
-                  identify cost-saving opportunities, negotiating better rates
-                  with service providers, and providing employees with tools for
-                  economical device use. The goals are to reduce costs.
-                </p>
-                <button className="mt-6 inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
-                  Learn more
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="flex-1 flex justify-center order-1 md:order-2">
-                <div className="relative group p-2">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl group-hover:blur-lg transform transition-all duration-300"></div>
-                  <Image
-                    src="/images/solutions/cost-savings.svg"
-                    alt="Expense Management"
-                    width={280}
-                    height={280}
-                    className="relative rounded-xl object-contain bg-[var(--brand-primary)]/5 p-6 transition-all duration-500 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Our Solutions
+            </h2>
+          </div>
+          <div className="h-1 w-16 bg-primary mx-auto"></div>
         </div>
 
-        {/* Bottom decoration */}
-        <div className="flex justify-center mt-16">
+        <div ref={servicesRef} className="space-y-20">
+          {solutionsContent.map((solution, index) => {
+            const isEven = index % 2 === 0;
+            const solutionNumber = index + 1;
+            const IconComponent = solutionIcons[index];
+
+            return (
+              <section
+                key={solution.title}
+                className="service-section transition-all duration-700 opacity-0 translate-y-10"
+              >
+                {/* Desktop Layout - Enhanced with icons */}
+                <div className="hidden md:flex flex-row gap-8 items-center mb-6 md:mb-10">
+                  <div
+                    className={`flex-1 ${isEven ? "order-2 md:order-1" : ""}`}
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
+                        <IconComponent className="w-6 h-6 text-primary" />
+                      </div>
+                      <span className="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full text-primary font-bold border border-primary/20">
+                        {solutionNumber}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
+                      {solution.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {solution.description}
+                    </p>
+                  </div>
+                  <div
+                    className={`flex-1 flex justify-center ${
+                      isEven ? "order-1 md:order-2" : ""
+                    }`}
+                  >
+                    <div className="relative group p-2">
+                      <Image
+                        src={solution.imagePath}
+                        alt={solution.title}
+                        width={280}
+                        height={280}
+                        className="object-cover rounded-2xl transition-all duration-500 group-hover:scale-105 group-hover:rotate-1"
+                      />
+                      {/* Floating icon overlay */}
+                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-background/90 backdrop-blur-sm rounded-full flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <IconComponent className="w-5 h-5 text-primary" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Layout - Enhanced with icons */}
+                <div className="md:hidden bg-background/95 backdrop-blur-sm rounded-2xl border border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:border-primary/30 group">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={solution.imagePath}
+                      alt={solution.title}
+                      width={400}
+                      height={200}
+                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 left-4 flex items-center gap-2">
+                      <div className="w-10 h-10 bg-background/95 backdrop-blur-sm rounded-full flex items-center justify-center border border-primary/20">
+                        <IconComponent className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="w-8 h-8 bg-background/95 backdrop-blur-sm flex items-center justify-center rounded-full text-primary font-bold shadow-md border border-primary/20">
+                        {solutionNumber}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-background/50">
+                    <h3 className="text-xl font-semibold mb-3 text-foreground">
+                      {solution.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm mb-4">
+                      {solution.description}
+                    </p>
+                  </div>
+                </div>
+              </section>
+            );
+          })}
+        </div>
+
+        {/* Bottom decoration with icon */}
+        <div className="flex flex-col items-center mt-16 space-y-4">
+          <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center animate-pulse">
+            <Sparkles className="w-6 h-6 text-primary" />
+          </div>
           <div className="h-0.5 w-32 bg-primary/30 rounded-full"></div>
         </div>
       </div>
@@ -553,6 +420,33 @@ function Solutions() {
         }
       }
       
+      @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-10px) rotate(2deg); }
+        66% { transform: translateY(5px) rotate(-1deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+      }
+      
+      @keyframes pulse-glow {
+        0% { 
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% { 
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        100% { 
+          opacity: 0.7;
+          transform: scale(1);
+        }
+      }
+      
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      
       .fade-in-up {
         animation: fadeInUp 0.8s ease-out forwards;
       }
@@ -561,14 +455,35 @@ function Solutions() {
         animation: fadeIn 0.6s ease-out forwards;
       }
       
-      @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
       }
       
-      .float {
-        animation: float 6s ease-in-out infinite;
+      .pulse-glow {
+        animation: pulse-glow 3s ease-in-out infinite;
+      }
+      
+      /* Enhanced hover effects */
+      .service-section:hover .group {
+        transform: translateY(-2px);
+      }
+      
+      /* Shimmer effect for cards */
+      .shimmer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(var(--primary), 0.1), transparent);
+        animation: shimmer 2s infinite;
+        pointer-events: none;
+      }
+      
+      /* Smooth transitions for all interactive elements */
+      .transition-all {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
     `;
     document.head.appendChild(style);

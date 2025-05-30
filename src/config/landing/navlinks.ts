@@ -24,4 +24,12 @@ const ButtonText = "Contact Us";
 
 const App = "/contact";
 
-export { navLinks, App, ButtonText };
+// Logo configuration
+const LogoConfig = {
+  src: "/tmlong_white.png",
+  alt: "Telemorph Logo",
+  width: 120,
+  height: 40,
+};
+
+export { navLinks, App, ButtonText, LogoConfig };
